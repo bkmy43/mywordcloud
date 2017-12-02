@@ -15,7 +15,7 @@ def add_word(word=None):  # noqa: E501
 
     :rtype: None
     """
-    return 'do some magic!'
+    return word
 
 
 def get_words(user_uuid, language, skip=None, limit=None):  # noqa: E501
