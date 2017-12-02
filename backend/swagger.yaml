@@ -1,0 +1,105 @@
+---
+swagger: "2.0"
+info:
+  description: "Backend API for mywordcloud project of ReDI School at disruptberlin2017\
+    \ hackaton"
+  version: "1.0.0"
+  title: "mywordcloud API"
+  contact:
+    email: "bkmy43@googlemail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/redi/mywordcloud/1.0.0"
+schemes:
+- "https"
+paths:
+  /words:
+    get:
+      summary: "searches statistics over words usage in the database for particular\
+        \ user and language"
+      description: "By passing in the appropriate options (user_id, language), you\
+        \ can search for\nstatistics over word usage in mywordcloud database\n"
+      operationId: "get_words"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_uuid"
+        in: "query"
+        description: "user id is required to search for words"
+        required: true
+        type: "string"
+      - name: "language"
+        in: "query"
+        description: "language to limit the search to"
+        required: true
+        type: "string"
+      - name: "skip"
+        in: "query"
+        description: "number of records to skip for pagination"
+        required: false
+        type: "integer"
+        minimum: 0
+        format: "int32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of records to return"
+        required: false
+        type: "integer"
+        maximum: 50.0
+        minimum: 0
+        format: "int32"
+      responses:
+        200:
+          description: "search results matching user and language"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/word_item"
+        400:
+          description: "bad input parameter"
+    post:
+      summary: "adds a word to user statistics"
+      description: "for particular user adds word usage statistics, including category\
+        \ and count"
+      operationId: "add_word"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "word"
+        description: "list of words to add"
+        required: false
+        schema:
+          type: "array"
+          items:
+            type: "string"
+      responses:
+        201:
+          description: "added word stats to the database"
+        400:
+          description: "invalid input, object invalid"
+definitions:
+  word_item:
+    type: "object"
+    required:
+    - "category"
+    - "count"
+    - "word"
+    properties:
+      word:
+        type: "string"
+        example: "apple"
+      category:
+        type: "string"
+        example: "family, business, friends"
+      count:
+        type: "integer"
+        minimum: 0
+    example:
+      count: 0
+      category: "family, business, friends"
+      word: "apple"
