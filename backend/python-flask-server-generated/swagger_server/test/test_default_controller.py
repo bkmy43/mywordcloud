@@ -19,7 +19,7 @@ class TestDefaultController(BaseTestCase):
         """
         word = [List[str]()]
         response = self.client.open(
-            '/redi/mywordcloud/1.0.0/words',
+            '//words',
             method='POST',
             data=json.dumps(word),
             content_type='application/json')
@@ -36,7 +36,7 @@ class TestDefaultController(BaseTestCase):
                         ('skip', 1),
                         ('limit', 50)]
         response = self.client.open(
-            '/redi/mywordcloud/1.0.0/words',
+            '//words',
             method='GET',
             query_string=query_string)
         self.assert200(response,

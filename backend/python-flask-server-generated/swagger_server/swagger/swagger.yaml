@@ -10,10 +10,10 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
-basePath: "/redi/mywordcloud/1.0.0"
+host: "ec2-18-221-66-149.us-east-2.compute.amazonaws.com:8080"
+basePath: "/"
 schemes:
-- "https"
+- "http"
 paths:
   /words:
     get:
