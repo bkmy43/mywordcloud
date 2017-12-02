@@ -59,6 +59,7 @@ paths:
               $ref: "#/definitions/word_item"
         400:
           description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
     post:
       summary: "adds a word to user statistics"
       description: "for particular user adds word usage statistics, including category\
@@ -82,6 +83,7 @@ paths:
           description: "added word stats to the database"
         400:
           description: "invalid input, object invalid"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
 definitions:
   word_item:
     type: "object"
@@ -92,14 +94,14 @@ definitions:
     properties:
       word:
         type: "string"
-        example: "apple"
+        example: "office"
       category:
         type: "string"
-        example: "family, business, friends"
+        example: "business"
       count:
         type: "integer"
         minimum: 0
     example:
       count: 0
-      category: "family, business, friends"
-      word: "apple"
+      category: "business"
+      word: "office"
