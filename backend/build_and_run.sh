@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd python-flask-server-generated
+cd python-flask-server
 
 # building the image
 docker build -t swagger_server .

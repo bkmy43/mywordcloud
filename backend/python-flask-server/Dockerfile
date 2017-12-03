@@ -1,10 +1,13 @@
 FROM python:3-alpine
 
-RUN apk update && \
-    apk add --virtual build-deps gcc python-dev musl-dev && \
-    apk add postgresql-dev && \
-    apk add libfreetype6-dev libxft-dev libjpeg&& \
-    apk add python3-matplotlib
+RUN apk update
+RUN apk add --virtual build-deps gcc python-dev musl-dev
+RUN apk add postgresql-dev
+RUN apk add libxft-dev
+RUN apk add freetype-dev
+RUN apk add libjpeg
+#RUN apk add py-numpy
+#RUN apk add py-matplotlib
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

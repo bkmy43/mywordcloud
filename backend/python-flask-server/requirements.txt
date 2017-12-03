@@ -3,6 +3,7 @@ python_dateutil == 2.6.0
 setuptools >= 21.0.0
 sqlalchemy
 psycopg2
+numpy
 matplotlib
 pillow
 

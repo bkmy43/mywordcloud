@@ -27,5 +27,7 @@ def display_wordcloud(words):
     plt.axis("off")
     plt.show()
 
+    wordcloud.to_file("word_cloud.png")
+
 # fill_db_with_shakespeare()
-wordcloud(get_words_from_db(get_db_connection()))
+display_wordcloud(get_words_from_db(get_db_connection()))
