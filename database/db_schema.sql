@@ -49,17 +49,28 @@ DROP TABLE IF EXISTS user_record_sessions CASCADE;
 CREATE TABLE user_record_sessions(
 r_id serial primary key,
 r_created timestamp,
-r_language integer references user_language(l_id)
+r_language_id integer references user_language(l_id)
 );
 
 
-DROP TABLE IF EXISTS user_words CASCADE;
-CREATE TABLE user_words(
+DROP TABLE IF EXISTS user_word CASCADE;
+CREATE TABLE user_word(
 w_id serial primary key,
 w_user_id integer references user_account(u_id),
-w_language text,
+w_language_id integer references user_language(l_id),
 w_word text,
 w_count integer
 );
 
+CREATE OR REPLACE VIEW v_words_by_language
+AS
+SELECT u_uuid,
+       l_language,
+       count(*) AS number_of_words
+  FROM user_account
+  JOIN user_word ON w_user_id = u_id
+  JOIN user_language ON w_language_id = l_id
+ GROUP BY u_uuid,
+          l_language
+ ORDER BY count(*) DESC;
 

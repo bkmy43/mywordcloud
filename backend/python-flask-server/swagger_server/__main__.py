@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import connexion
-
 from swagger_server import encoder
 
+dbconn = None
 
 def main():
     app = connexion.App(__name__, specification_dir='./swagger/')
