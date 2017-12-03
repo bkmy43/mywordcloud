@@ -1,13 +1,10 @@
 FROM python:3-alpine
 
 RUN apk update
-RUN apk add --virtual build-deps gcc python-dev musl-dev
-RUN apk add postgresql-dev
-RUN apk add libxft-dev
-RUN apk add freetype-dev
-RUN apk add libjpeg
-#RUN apk add py-numpy
-#RUN apk add py-matplotlib
+RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk --no-cache --update-cache add gcc python python-dev postgresql-dev musl-dev py-pip build-base libjpeg jpeg-dev openjpeg-dev libxft-dev freetype-dev libpng-dev openblas-dev
+RUN apk add git
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

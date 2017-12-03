@@ -11,6 +11,7 @@ from swagger_server import util
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
+sys.path.insert(0, currentdir)
 
 from mywordcloud_data import *
 
@@ -45,4 +46,4 @@ def get_words(user_uuid, language, skip=None, limit=None):  # noqa: E501
 
     :rtype: List[WordItem]
     """
-    return 'do some magic!'
+    return json.dumps(get_word_stats_from_db(get_db_connection(), user_uuid, language), ensure_ascii=False)

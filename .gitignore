@@ -1,2 +1,4 @@
 .idea
+backend/python-flask-server/swagger_server/*.png
+backend/python-flask-server/swagger_server/controllers/*.png
 
