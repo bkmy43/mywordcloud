@@ -74,3 +74,13 @@ SELECT u_uuid,
           l_language
  ORDER BY count(*) DESC;
 
+CREATE OR REPLACE VIEW public.v_user_word_total AS 
+ SELECT user_account.u_uuid,
+    user_language.l_language,
+    user_word.w_word,
+    sum(user_word.w_count) AS w_total_count
+   FROM user_account
+     JOIN user_word ON user_word.w_user_id = user_account.u_id
+     JOIN user_language ON user_word.w_language_id = user_language.l_id
+  GROUP BY user_account.u_uuid, user_language.l_language, user_word.w_word
+  ORDER BY (sum(user_word.w_count)) DESC;

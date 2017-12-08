@@ -3,7 +3,6 @@ import six
 import os
 import sys
 import inspect
-import json
 
 from swagger_server.models.word_item import WordItem  # noqa: E501
 from swagger_server import util
@@ -27,7 +26,6 @@ def add_word(word=None):  # noqa: E501
     :rtype: None
     """
     add_words_to_db(get_db_connection(), word)
-    return
 
 
 def get_words(user_uuid, language, skip=None, limit=None):  # noqa: E501
@@ -46,7 +44,9 @@ def get_words(user_uuid, language, skip=None, limit=None):  # noqa: E501
 
     :rtype: List[WordItem]
     """
-    return json.dumps(get_word_stats_from_db(get_db_connection(), user_uuid, language), ensure_ascii=False)
+
+    return get_word_stats_from_db(get_db_connection(), user_uuid, language, skip, limit)
+
 
 def get_wordcloud(user_uuid, language):  # noqa: E501
     """visualizes wordcloud for specified user and language as a picture
