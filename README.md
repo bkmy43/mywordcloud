@@ -2,7 +2,9 @@
 
 ## ReDI School project at distruptberlin2017 Hackaton by Tech Crunch
 
-### to build and run backend:
+### Backend
+
+to build and run backend:
 
 ```bash
 cd mywordcloud/backend/python-flask-server
