@@ -84,6 +84,31 @@ paths:
         400:
           description: "invalid input, object invalid"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /wordcloud:
+    get:
+      summary: "visualizes wordcloud for specified user and language as a picture"
+      description: "By passing in the appropriate options (user_id, language), you\
+        \ can generate wordcloud picture as png\n"
+      operationId: "get_wordcloud"
+      produces:
+      - "application/html"
+      parameters:
+      - name: "user_uuid"
+        in: "query"
+        description: "user id is required to search for words"
+        required: true
+        type: "string"
+      - name: "language"
+        in: "query"
+        description: "language to limit the search to"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "wordcloud picture for user/language"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
 definitions:
   word_item:
     type: "object"

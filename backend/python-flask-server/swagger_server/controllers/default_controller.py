@@ -47,3 +47,17 @@ def get_words(user_uuid, language, skip=None, limit=None):  # noqa: E501
     :rtype: List[WordItem]
     """
     return json.dumps(get_word_stats_from_db(get_db_connection(), user_uuid, language), ensure_ascii=False)
+
+def get_wordcloud(user_uuid, language):  # noqa: E501
+    """visualizes wordcloud for specified user and language as a picture
+
+    By passing in the appropriate options (user_id, language), you can generate wordcloud picture as png  # noqa: E501
+
+    :param user_uuid: user id is required to search for words
+    :type user_uuid: str
+    :param language: language to limit the search to
+    :type language: str
+
+    :rtype: None
+    """
+    return get_wordcloud_image(get_db_connection())
