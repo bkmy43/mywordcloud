@@ -103,8 +103,9 @@ def get_words_from_db(db_connection, user_uuid='36ff545d-ca5a-4855-985b-eda71278
 
 def get_wordcloud_image(db_connection, user_uuid='36ff545d-ca5a-4855-985b-eda712781efb', language='English'):
     words = get_words_from_db(db_connection, user_uuid, language)
-    print('aaa', len(words))
-    wordcloud = WordCloud(width=1000, height=500).generate(' '.join(words))
+    wordcloud = WordCloud(width=640, height=1136, background_color='BLACK',
+                          collocations=False,
+                          stopwords=STOPWORDS).generate(' '.join(words))
 
     output = io.BytesIO()
     wordcloud.to_image().save(output, format='PNG')
