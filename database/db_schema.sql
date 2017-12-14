@@ -42,7 +42,9 @@ INSERT INTO user_account (u_uuid, u_firstname, u_lastname)
 VALUES
 ('36ff545d-ca5a-4855-985b-eda712781efb','John', 'Miller'),
 (uuid_generate_v4(), 'Merry', 'Shelly'),
-(uuid_generate_v4(), 'Fyodor', 'Raskolnikow');
+(uuid_generate_v4(), 'Fyodor', 'Raskolnikow'),
+(uuid_generate_v4(), 'William', 'Shakespeare'),
+(uuid_generate_v4(), 'Ernest', 'Hemingway');
 
 
 DROP TABLE IF EXISTS user_record_sessions CASCADE;
