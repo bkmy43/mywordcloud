@@ -43,7 +43,7 @@ def get_language_id_by_name(db_connection, language):
     return res[0]
 
 
-def add_words_to_db(db_connection, list_of_words, user_uuid = '36ff545d-ca5a-4855-985b-eda712781efb',
+def add_words_to_db(db_connection, list_of_words, user_uuid='36ff545d-ca5a-4855-985b-eda712781efb',
                     language='English'):
     if not list_of_words:
         return
@@ -110,7 +110,6 @@ def get_wordcloud_image(db_connection, user_uuid='36ff545d-ca5a-4855-985b-eda712
     output = io.BytesIO()
     wordcloud.to_image().save(output, format='PNG')
     return output.getvalue()
-
 
 
 # get_wordcloud_image(get_db_connection())

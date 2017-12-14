@@ -60,4 +60,4 @@ def get_wordcloud(user_uuid, language):  # noqa: E501
 
     :rtype: None
     """
-    return get_wordcloud_image(get_db_connection())
+    return get_wordcloud_image(db_connection=get_db_connection(),user_uuid=user_uuid, language=language)
