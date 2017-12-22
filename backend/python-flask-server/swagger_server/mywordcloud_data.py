@@ -1,8 +1,11 @@
-import sqlalchemy, json
+import sqlalchemy
 import os
 import sys
 import inspect
 import io
+import requests
+from bs4 import BeautifulSoup
+import urllib
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -112,4 +115,14 @@ def get_wordcloud_image(db_connection, user_uuid='36ff545d-ca5a-4855-985b-eda712
     return output.getvalue()
 
 
-# get_wordcloud_image(get_db_connection())
+def get_image_from_google(word):
+    url = 'https://www.google.de/search?q={}&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiU4pKNv53YAhUNDuwKHWdvBl4Q_AUIDSgE&biw=1277&bih=634' \
+        .format(word)
+
+    page = requests.get(url).text
+    soup = BeautifulSoup(page, 'html.parser')
+
+    raw_img = soup.find('img')
+    link = raw_img.get('src')
+    response = urllib.request.urlopen(link)
+    return response.read()

@@ -109,6 +109,25 @@ paths:
         400:
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /image:
+    get:
+      summary: "gets first picture from google image search by given word"
+      description: "By passing in the word you can get an image from google for it"
+      operationId: "get_image"
+      produces:
+      - image/png
+      parameters:
+      - name: "word"
+        in: "query"
+        description: "word to search google for"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "picture for given word"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
 definitions:
   word_item:
     type: "object"

@@ -58,6 +58,18 @@ def get_wordcloud(user_uuid, language):  # noqa: E501
     :param language: language to limit the search to
     :type language: str
 
-    :rtype: None
+    :rtype: image/png
     """
     return get_wordcloud_image(db_connection=get_db_connection(),user_uuid=user_uuid, language=language)
+
+def get_image(word):  # noqa: E501
+    """gets first picture from google image search by given word
+
+    By passing in the word you can get an image from google for it # noqa: E501
+
+    :param word: word to search google for
+    :type word: str
+
+    :rtype: image/*
+    """
+    return get_image_from_google(word=word)
